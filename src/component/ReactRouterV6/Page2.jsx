@@ -6,8 +6,8 @@ class Page2 extends Component {
   render() {
     return (
       <>
-      <div>Page2 {this.props.params.id}</div>
       <Outlet/>
+      <div>Page2</div>
       </>
     )
   }

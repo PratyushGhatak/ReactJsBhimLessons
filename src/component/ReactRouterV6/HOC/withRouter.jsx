@@ -5,8 +5,7 @@ const withRouter = WrappedComponent =>
 {
     const EnhancedComponent=props => {
         const params = useParams();
-        // etc... other react-router-dom v6 hooks
-      
+        // etc... other react-router-dom v6 hooks  
         return (
             <WrappedComponent
             params={params}

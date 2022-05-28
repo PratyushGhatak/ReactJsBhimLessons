@@ -18,6 +18,7 @@ import Home from './component/ReactRouterV6/Home';
 import Page1 from './component/ReactRouterV6/Page1';
 import Page2 from './component/ReactRouterV6/Page2';
 import SubPageforPage2 from './component/ReactRouterV6/SubPageforPage2';
+import IdComponent from './component/ReactRouterV6/IdComponent';
 export class App extends Component
 {
   constructor(props)
@@ -55,9 +56,9 @@ export class App extends Component
           <Route exact path="/" element={<Home/>}/>
           <Route exact path="/page1" element={<Page1/>}/>
           <Route exact path="/page2" element={<Page2/>}>
+            <Route exact path="subpage" element={<SubPageforPage2/>}/>
+            <Route exact path=":id" element={<IdComponent/>}/>
           </Route>
-          <Route exact path="/page2/:id" element={<Page2/>}/>
-          <Route path="/page2/subpage" element={<SubPageforPage2/>}/>
 
 
         </Routes>

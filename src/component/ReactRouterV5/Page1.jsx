@@ -5,7 +5,7 @@ const Page1 = () => {
     const params=useParams()
     console.log(params)
   return (
-    <div>Page1</div>
+    <div>Page1 {params.id}</div>
   )
 }
 
