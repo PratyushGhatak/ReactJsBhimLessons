@@ -4,7 +4,20 @@ import React, { Component, Pure } from 'react'
 import ValueComponent from './component/ValueComponent';
 import ChildComponent from './component/ChildComponent';
 import { FunctionalComponent } from './component/FunctionalComponent';
-const arr=[{id:1,val:1},{id:2,val:2},{id:3,val:3},{id:4,val:4}]
+import Nav from './component/Nav';
+// for v5
+// import { BrowserRouter as Router,Switch,Route,Redirect} from "react-router-dom";
+// import Page2 from './component/ReactRouterV5/Page2';
+// import Page1 from './component/ReactRouterV5/Page1';
+// import Home from './component/ReactRouterV5/Home';
+// import SubPageforPage2 from './component/ReactRouterV6/SubPageforPage2';
+
+// for v6
+import { BrowserRouter as Router,Routes,Route} from "react-router-dom";
+import Home from './component/ReactRouterV6/Home';
+import Page1 from './component/ReactRouterV6/Page1';
+import Page2 from './component/ReactRouterV6/Page2';
+import SubPageforPage2 from './component/ReactRouterV6/SubPageforPage2';
 export class App extends Component
 {
   constructor(props)
@@ -20,46 +33,35 @@ export class App extends Component
     // this.decrementByOne = this.decrementByOne.bind(this)
 
   }
-  incrementByNumber = (param = 1) =>
-  {
-    //every function has its own `this` and this `this` is undefined
-
-    this.setState({ ...this.state, counterValue: this.state.counterValue + param },
-      ()=>
-      {
-        console.log("value of counter after increment",this.state.counterValue)
-      })
-    
-  }
-
-  decrementByOne = async() =>
-  {
-    await this.setState({ ...this.state, counterValue: this.state.counterValue - 1 })
-    console.log("value of counter after decrement",this.state.counterValue)
-  }
-  componentDidMount()
-  {
-  console.log("componentDidMount")
-  }
-
   render()
   {
-    console.log("rerendered App.js")
     return (
       <>
-        {
-         arr.length>0
-         ? arr.map((el,index)=><h1 key={el.id}>{el.val}</h1>)
-         :
-         <>
-         </>
-        }
-        {/* <ValueComponent value={this.state.counterValue} /> */}
-        {/* {this.state.showChild && <ChildComponent/>} */}
-        {/* <button onClick={() => this.incrementByNumber(1)}>increment by 1</button> */}
-        {/* <button onClick={this.decrementByOne}>decrement by 1</button> */}
-        {/* {this.state.showChild ?<FunctionalComponent/>:<></>} */}
-        {/* <button onClick={()=>this.setState({...this.state,showChild:false})}>Hide Functional Component</button> */}
+      <Router>
+        <Nav/>
+        {/* set up for v5 */}
+        {/* <Switch>
+          <Route exact path="/" component={()=><Home/>}/>
+          <Route exact path="/home" component={()=><Redirect to={'/'}/>}/>
+          <Route exact path="/page1">
+            <Page1 />
+          </Route>
+          <Route exact path="/page2" component={()=><Page2/>}/>
+          <Route path="/page2/subpage" component={()=><SubPageforPage2/>}/>
+          <Route path="/page2/:id" component={()=><Page2/>}/>
+        </Switch> */}
+        {/* set up for v6 */}
+        <Routes>
+          <Route exact path="/" element={<Home/>}/>
+          <Route exact path="/page1" element={<Page1/>}/>
+          <Route exact path="/page2" element={<Page2/>}>
+          </Route>
+          <Route exact path="/page2/:id" element={<Page2/>}/>
+          <Route path="/page2/subpage" element={<SubPageforPage2/>}/>
+
+
+        </Routes>
+      </Router>
       </>
     )
   }
