@@ -5,8 +5,7 @@ const Nav = () => {
   return (
     <nav class="nav">
     <Link class="nav-link" aria-current="page" to="/">Home</Link>
-    <Link class="nav-link" to="/page1">Page1</Link>
-    <Link class="nav-link" to={`/page2/${10}`}>Page2</Link>
+    <Link class="nav-link" to="/child">Child</Link>
     </nav>
   )
 }
